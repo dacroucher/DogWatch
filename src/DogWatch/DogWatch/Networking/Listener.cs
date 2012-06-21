@@ -7,15 +7,18 @@ using System.Net;
 
 namespace DogWatch.Networking
 {
+    public delegate void NewConnectionHandler(object sender, EventArgs e);
+
     public class Listener
     {
         private Socket m_sock;
         private AsyncCallback m_onAccept;
+        public event NewConnectionHandler NewConnection;
 
         public Listener(int port)
         {
             m_onAccept = new AsyncCallback(OnAccept);
-            InitListen(port);                        
+            InitListen(port);
         }
 
         public void Listen()
@@ -33,8 +36,10 @@ namespace DogWatch.Networking
         private void OnAccept(IAsyncResult iar)
         {
             Socket s = m_sock.EndAccept(iar);
+
+            if (NewConnection != null)
+                NewConnection(this,EventArgs.Empty);
             m_sock.BeginAccept(m_onAccept, null);
         }
-
     }
 }

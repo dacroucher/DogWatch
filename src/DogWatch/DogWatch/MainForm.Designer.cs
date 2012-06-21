@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.group_currentView = new System.Windows.Forms.GroupBox();
-            this.group_Functionality = new System.Windows.Forms.GroupBox();
             this.currentViewBox = new System.Windows.Forms.PictureBox();
+            this.group_Functionality = new System.Windows.Forms.GroupBox();
             this.group_networking = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.netStatusText = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.netStatusText = new System.Windows.Forms.TextBox();
+            this.listenButton = new System.Windows.Forms.Button();
             this.group_currentView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.currentViewBox)).BeginInit();
             this.group_networking.SuspendLayout();
@@ -50,6 +50,14 @@
             this.group_currentView.TabStop = false;
             this.group_currentView.Text = "Current View";
             // 
+            // currentViewBox
+            // 
+            this.currentViewBox.Location = new System.Drawing.Point(7, 20);
+            this.currentViewBox.Name = "currentViewBox";
+            this.currentViewBox.Size = new System.Drawing.Size(435, 356);
+            this.currentViewBox.TabIndex = 0;
+            this.currentViewBox.TabStop = false;
+            // 
             // group_Functionality
             // 
             this.group_Functionality.Location = new System.Drawing.Point(12, 401);
@@ -59,41 +67,17 @@
             this.group_Functionality.TabStop = false;
             this.group_Functionality.Text = "Functionality";
             // 
-            // currentViewBox
-            // 
-            this.currentViewBox.Location = new System.Drawing.Point(7, 20);
-            this.currentViewBox.Name = "currentViewBox";
-            this.currentViewBox.Size = new System.Drawing.Size(435, 356);
-            this.currentViewBox.TabIndex = 0;
-            this.currentViewBox.TabStop = false;
-            // 
             // group_networking
             // 
             this.group_networking.Controls.Add(this.label1);
             this.group_networking.Controls.Add(this.netStatusText);
-            this.group_networking.Controls.Add(this.button1);
+            this.group_networking.Controls.Add(this.listenButton);
             this.group_networking.Location = new System.Drawing.Point(468, 13);
             this.group_networking.Name = "group_networking";
             this.group_networking.Size = new System.Drawing.Size(284, 541);
             this.group_networking.TabIndex = 2;
             this.group_networking.TabStop = false;
             this.group_networking.Text = "Networking";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(6, 88);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(114, 31);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Listen";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // netStatusText
-            // 
-            this.netStatusText.Location = new System.Drawing.Point(6, 36);
-            this.netStatusText.Name = "netStatusText";
-            this.netStatusText.Size = new System.Drawing.Size(272, 20);
-            this.netStatusText.TabIndex = 1;
             // 
             // label1
             // 
@@ -103,6 +87,23 @@
             this.label1.Size = new System.Drawing.Size(83, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Network Status:";
+            // 
+            // netStatusText
+            // 
+            this.netStatusText.Location = new System.Drawing.Point(6, 36);
+            this.netStatusText.Name = "netStatusText";
+            this.netStatusText.Size = new System.Drawing.Size(272, 20);
+            this.netStatusText.TabIndex = 1;
+            // 
+            // listenButton
+            // 
+            this.listenButton.Location = new System.Drawing.Point(6, 88);
+            this.listenButton.Name = "listenButton";
+            this.listenButton.Size = new System.Drawing.Size(114, 31);
+            this.listenButton.TabIndex = 0;
+            this.listenButton.Text = "Listen";
+            this.listenButton.UseVisualStyleBackColor = true;
+            this.listenButton.Click += new System.EventHandler(this.listenButton_Click);
             // 
             // MainForm
             // 
@@ -130,7 +131,7 @@
         private System.Windows.Forms.GroupBox group_networking;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox netStatusText;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button listenButton;
     }
 }
 

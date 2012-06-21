@@ -139,6 +139,7 @@
     </Compile>
     <Compile Include="Networking\Broadcaster.cs" />
     <Compile Include="Networking\Listener.cs" />
+    <Compile Include="Networking\Network.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainForm.resx">
