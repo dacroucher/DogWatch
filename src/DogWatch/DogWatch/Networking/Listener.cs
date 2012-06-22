@@ -36,9 +36,7 @@ namespace DogWatch.Networking
         private void OnAccept(IAsyncResult iar)
         {
             Socket s = m_sock.EndAccept(iar);
-
-            if (NewConnection != null)
-                NewConnection(this,EventArgs.Empty);
+            Network.NewClient(s);
             m_sock.BeginAccept(m_onAccept, null);
         }
     }

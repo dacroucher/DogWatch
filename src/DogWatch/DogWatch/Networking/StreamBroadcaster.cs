@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Net;
@@ -7,22 +8,22 @@ using System.Net.Sockets;
 
 namespace DogWatch.Networking
 {
-    public class Broadcaster
+    public class StreamBroadcaster
     {
         private Dictionary<int, Client> m_dictionary;
         private AsyncCallback m_OnSend;
 
-        public Broadcaster()
+        public StreamBroadcaster()
         {
-            m_dictionary = new Dictionary<int, Client>();
             m_OnSend = new AsyncCallback(OnSend);
+            m_dictionary = new Dictionary<int, Client>();
         }
 
         public void AddClient(Client client)
         {
             lock (m_dictionary)
             {
-                m_dictionary.Add(client.ID,client);
+                m_dictionary.Add(client.ID, client);
             }
         }
 
@@ -35,15 +36,22 @@ namespace DogWatch.Networking
             }
         }
 
-        public void Broadcast(byte[] buffer)
+        public void Broadcast()
         {
-            lock(m_dictionary)
+            byte[] buffer;
+            lock (m_dictionary)
             {
                 foreach (Client c in m_dictionary.Values)
                 {
+                    buffer = ProcessFrame(c);
                     c.sock.BeginSend(buffer, 0, buffer.Length, SocketFlags.None, m_OnSend, c.sock);
                 }
             }
+        }
+
+        private byte[] ProcessFrame(Client c)
+        {
+            throw new NotImplementedException();
         }
 
         private void OnSend(IAsyncResult iar)
@@ -64,6 +72,6 @@ namespace DogWatch.Networking
             return sb.ToString();
         }
 
-        
+
     }
 }
