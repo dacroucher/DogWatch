@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.group_currentView = new System.Windows.Forms.GroupBox();
-            this.currentViewBox = new System.Windows.Forms.PictureBox();
+            this.currentViewBox = new AForge.Controls.PictureBox();
             this.group_Functionality = new System.Windows.Forms.GroupBox();
             this.group_networking = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -45,24 +45,25 @@
             this.group_currentView.Controls.Add(this.currentViewBox);
             this.group_currentView.Location = new System.Drawing.Point(13, 13);
             this.group_currentView.Name = "group_currentView";
-            this.group_currentView.Size = new System.Drawing.Size(448, 382);
+            this.group_currentView.Size = new System.Drawing.Size(621, 368);
             this.group_currentView.TabIndex = 0;
             this.group_currentView.TabStop = false;
             this.group_currentView.Text = "Current View";
             // 
             // currentViewBox
             // 
+            this.currentViewBox.Image = null;
             this.currentViewBox.Location = new System.Drawing.Point(7, 20);
             this.currentViewBox.Name = "currentViewBox";
-            this.currentViewBox.Size = new System.Drawing.Size(435, 356);
+            this.currentViewBox.Size = new System.Drawing.Size(600, 333);
             this.currentViewBox.TabIndex = 0;
             this.currentViewBox.TabStop = false;
             // 
             // group_Functionality
             // 
-            this.group_Functionality.Location = new System.Drawing.Point(12, 401);
+            this.group_Functionality.Location = new System.Drawing.Point(12, 387);
             this.group_Functionality.Name = "group_Functionality";
-            this.group_Functionality.Size = new System.Drawing.Size(449, 153);
+            this.group_Functionality.Size = new System.Drawing.Size(622, 167);
             this.group_Functionality.TabIndex = 1;
             this.group_Functionality.TabStop = false;
             this.group_Functionality.Text = "Functionality";
@@ -72,7 +73,7 @@
             this.group_networking.Controls.Add(this.label1);
             this.group_networking.Controls.Add(this.netStatusText);
             this.group_networking.Controls.Add(this.listenButton);
-            this.group_networking.Location = new System.Drawing.Point(468, 13);
+            this.group_networking.Location = new System.Drawing.Point(655, 13);
             this.group_networking.Name = "group_networking";
             this.group_networking.Size = new System.Drawing.Size(284, 541);
             this.group_networking.TabIndex = 2;
@@ -126,7 +127,8 @@
         #endregion
 
         private System.Windows.Forms.GroupBox group_currentView;
-        private System.Windows.Forms.PictureBox currentViewBox;
+        private AForge.Controls.PictureBox currentViewBox;
+        //private System.Windows.Forms.PictureBox currentViewBox;
         private System.Windows.Forms.GroupBox group_Functionality;
         private System.Windows.Forms.GroupBox group_networking;
         private System.Windows.Forms.Label label1;

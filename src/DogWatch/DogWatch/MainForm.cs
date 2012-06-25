@@ -18,20 +18,29 @@ namespace DogWatch
         public MainForm()
         {
             cam = new CamInterface();
-            cam.NewFrame += new NewFrameEventHandler(cam_NewFrame);
+            //cam.NewFrame += new NewFrameEventHandler(cam_NewFrame);
+            new VideoForm(cam).Show();
             Network.Init(9762);
-            InitializeComponent();
+            InitializeComponent();            
         }
+
+
 
         private void cam_NewFrame(object sender, EventArgs e)
         {
-            currentViewBox.Image = cam.Frame();
+            Bitmap temp = (Bitmap)cam.Frame().Clone();
+            Bitmap t2 = new Bitmap(temp, currentViewBox.Size);
+            Action action = () =>        
+                        currentViewBox.Image = t2;                                
+                this.Invoke(action);
+            
         }
 
         private void listenButton_Click(object sender, EventArgs e)
         {
             Network.listener.Listen();            
         }
+
 
         
 

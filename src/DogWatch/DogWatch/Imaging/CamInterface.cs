@@ -26,6 +26,9 @@ namespace DogWatch.Imaging
         {
             FilterInfoCollection videoDevice = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             source = new VideoCaptureDevice(videoDevice[0].MonikerString);
+            source.DesiredSnapshotSize = new Size(1024,576);
+            source.DesiredFrameSize = new Size(1024, 576);
+            //source.DesiredFrameRate = 3;
             source.NewFrame += new AForge.Video.NewFrameEventHandler(source_NewFrame);
         }
 
