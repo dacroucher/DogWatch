@@ -79,7 +79,7 @@ namespace DogWatch
             pixelFilter = new Pixellate();
 
             morphFilter = new Morph();
-            morphFilter.SourcePercent = 0.99;
+            morphFilter.SourcePercent = 0.9;
 
             towardsFilter = new MoveTowards();
             towardsFilter.StepSize = 10;
@@ -113,12 +113,12 @@ namespace DogWatch
             bmp = diffFilter.Apply(curr_gs);
             bmp = thresholdFilter.Apply(bmp);
             bmp = erosionFilter.Apply(bmp);
-            //bmp = openFilter.Apply(bmp);
-            //bmp = edgeFilter.Apply(bmp);
+            bmp = openFilter.Apply(bmp);
+            bmp = edgeFilter.Apply(bmp);
 
             try
             {
-                blobCount.Text = blobGrabber.Apply(bmp).Size.ToString();
+                //blobCount.Text = blobGrabber.Apply(bmp).Size.ToString();
             }
             catch (Exception)
             {
@@ -144,7 +144,6 @@ namespace DogWatch
             morphFilter.OverlayImage = curr_gs;
             back = morphFilter.Apply(back);
 
-            
 
             return bmp;
         }
