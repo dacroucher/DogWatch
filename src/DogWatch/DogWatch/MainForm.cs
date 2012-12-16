@@ -9,31 +9,48 @@ using System.Windows.Forms;
 using DogWatch.Networking;
 using DogWatch.Imaging;
 
+
 namespace DogWatch
 {
     public partial class MainForm : Form
     {
-        CamInterface cam;
+        private CamInterface cam;
+        private MotionDetector motionDetect;
+        private System.Timers.Timer motionTimeout;
 
         public MainForm()
         {
+            motionTimeout = new System.Timers.Timer(2000);
+            motionTimeout.Elapsed += new System.Timers.ElapsedEventHandler(motionTimeout_Elapsed);
             cam = new CamInterface();
-            //cam.NewFrame += new NewFrameEventHandler(cam_NewFrame);
-            new VideoForm(cam).Show();
+            //cam.NewFrame += new NewFrameEventHandler(cam_NewFrame);            
+            //new VideoForm(cam).Show();
+            //new TestPanel().Show();
+            motionDetect = new MotionDetector(cam, 1024,576);
+            motionDetect.MotionDetected += new MotionDetectedEventHandler(motionDetect_MotionDetected);
             Network.Init(9762);
-            InitializeComponent();            
+            InitializeComponent();
+            new MotionDebugPanel(cam,motionDetect).Show();
         }
 
+
+        private void motionDetect_MotionDetected(object sender, EventArgs e)
+        {
+            if(motionTimeout.Enabled)
+                motionTimeout.Stop();
+            Action action = () =>
+                notificationBox.Text = "MOTION DETECTED!";
+            this.Invoke(action);
+            motionTimeout.Start();
+        }
 
 
         private void cam_NewFrame(object sender, EventArgs e)
         {
-            Bitmap temp = (Bitmap)cam.Frame().Clone();
-            Bitmap t2 = new Bitmap(temp, currentViewBox.Size);
+            Bitmap frame = new Bitmap((Bitmap)cam.Frame().Clone(),currentViewBox.Size);
             Action action = () =>        
-                        currentViewBox.Image = t2;                                
-                this.Invoke(action);
-            
+                        currentViewBox.Image = frame;
+                this.Invoke(action);            
         }
 
         private void listenButton_Click(object sender, EventArgs e)
@@ -42,7 +59,13 @@ namespace DogWatch
         }
 
 
-        
+        void motionTimeout_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            Action action = () =>
+                notificationBox.Text = "";
+            this.Invoke(action);     
+        }
+
 
 
     }

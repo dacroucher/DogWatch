@@ -35,8 +35,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.netStatusText = new System.Windows.Forms.TextBox();
             this.listenButton = new System.Windows.Forms.Button();
+            this.notificationBox = new System.Windows.Forms.TextBox();
             this.group_currentView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.currentViewBox)).BeginInit();
+            this.group_Functionality.SuspendLayout();
             this.group_networking.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,7 +47,7 @@
             this.group_currentView.Controls.Add(this.currentViewBox);
             this.group_currentView.Location = new System.Drawing.Point(13, 13);
             this.group_currentView.Name = "group_currentView";
-            this.group_currentView.Size = new System.Drawing.Size(621, 368);
+            this.group_currentView.Size = new System.Drawing.Size(537, 325);
             this.group_currentView.TabIndex = 0;
             this.group_currentView.TabStop = false;
             this.group_currentView.Text = "Current View";
@@ -55,15 +57,16 @@
             this.currentViewBox.Image = null;
             this.currentViewBox.Location = new System.Drawing.Point(7, 20);
             this.currentViewBox.Name = "currentViewBox";
-            this.currentViewBox.Size = new System.Drawing.Size(600, 333);
+            this.currentViewBox.Size = new System.Drawing.Size(512, 288);
             this.currentViewBox.TabIndex = 0;
             this.currentViewBox.TabStop = false;
             // 
             // group_Functionality
             // 
-            this.group_Functionality.Location = new System.Drawing.Point(12, 387);
+            this.group_Functionality.Controls.Add(this.notificationBox);
+            this.group_Functionality.Location = new System.Drawing.Point(12, 359);
             this.group_Functionality.Name = "group_Functionality";
-            this.group_Functionality.Size = new System.Drawing.Size(622, 167);
+            this.group_Functionality.Size = new System.Drawing.Size(538, 195);
             this.group_Functionality.TabIndex = 1;
             this.group_Functionality.TabStop = false;
             this.group_Functionality.Text = "Functionality";
@@ -73,9 +76,9 @@
             this.group_networking.Controls.Add(this.label1);
             this.group_networking.Controls.Add(this.netStatusText);
             this.group_networking.Controls.Add(this.listenButton);
-            this.group_networking.Location = new System.Drawing.Point(655, 13);
+            this.group_networking.Location = new System.Drawing.Point(556, 13);
             this.group_networking.Name = "group_networking";
-            this.group_networking.Size = new System.Drawing.Size(284, 541);
+            this.group_networking.Size = new System.Drawing.Size(295, 541);
             this.group_networking.TabIndex = 2;
             this.group_networking.TabStop = false;
             this.group_networking.Text = "Networking";
@@ -106,11 +109,18 @@
             this.listenButton.UseVisualStyleBackColor = true;
             this.listenButton.Click += new System.EventHandler(this.listenButton_Click);
             // 
+            // notificationBox
+            // 
+            this.notificationBox.Location = new System.Drawing.Point(160, 78);
+            this.notificationBox.Name = "notificationBox";
+            this.notificationBox.Size = new System.Drawing.Size(175, 20);
+            this.notificationBox.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(942, 566);
+            this.ClientSize = new System.Drawing.Size(864, 566);
             this.Controls.Add(this.group_networking);
             this.Controls.Add(this.group_Functionality);
             this.Controls.Add(this.group_currentView);
@@ -118,6 +128,8 @@
             this.Text = "DogWatch";
             this.group_currentView.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.currentViewBox)).EndInit();
+            this.group_Functionality.ResumeLayout(false);
+            this.group_Functionality.PerformLayout();
             this.group_networking.ResumeLayout(false);
             this.group_networking.PerformLayout();
             this.ResumeLayout(false);
@@ -134,6 +146,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox netStatusText;
         private System.Windows.Forms.Button listenButton;
+        private System.Windows.Forms.TextBox notificationBox;
     }
 }
 
